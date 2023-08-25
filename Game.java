@@ -16,7 +16,7 @@ public class Game extends JFrame
 
 		// Set some window properties
 		this.setTitle("Turtle Attack!");
-		this.setSize(500, 500);
+		this.setSize(600, 600);
 		this.setFocusable(true);
 		this.getContentPane().add(view);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
