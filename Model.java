@@ -64,7 +64,7 @@ class Model
 	public void addThing(int x, int y)
 	{
 
-		things.add(new Thing(x, y, 0));
+		things.add(new Thing(x, y, 0)); // May want to change later
 		
 	}
 

@@ -51,7 +51,7 @@ public class Game extends JFrame
 		}
 	}
 
-	public static String[] Things = {
+	public static final String[] Things = {
 		"chair", 
 		"lamp", 
 		"mushroom",
