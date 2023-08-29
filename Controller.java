@@ -32,7 +32,12 @@ class Controller implements ActionListener, MouseListener, KeyListener
 	
 	public void mousePressed(MouseEvent e)
 	{
+		// move turtle to mouse click location
 		model.setDestination(e.getX(), e.getY());
+		// Add a thing to the model using method
+
+		  model.addThing(e.getX(), e.getY());
+
 	}
 
 	public void mouseReleased(MouseEvent e) 

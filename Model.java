@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Model
 {
 	int turtle_x;
@@ -5,6 +7,7 @@ class Model
 	int dest_x;
 	int dest_y;
 	static int speed = 4;
+	ArrayList<Thing> things;
 
 	Model()
 	{
@@ -12,6 +15,7 @@ class Model
 		this.turtle_y = 100;
 		this.dest_x = 150;
 		this.dest_y = 100;
+		this.things = new ArrayList<Thing>();
 	}
 
 	public void update()
@@ -39,4 +43,44 @@ class Model
 		this.dest_x = x;
 		this.dest_y = y;
 	}
+
+	//Add a class to represent a thing
+
+	class Thing
+	{
+		int x;
+		int y;
+		int type;
+
+		Thing(int x, int y, int type)
+		{
+			this.x = x;
+			this.y = y;
+			this.type = type;
+		}
+	}
+
+	
+	public void addThing(int x, int y)
+	{
+
+		things.add(new Thing(x, y, 0));
+		
+	}
+
+	
+
+	
+
+
+
+
+	
+
+	
+
+
+
+	
+
 }

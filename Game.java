@@ -50,4 +50,17 @@ public class Game extends JFrame
 			}
 		}
 	}
+
+	public static String[] Things = {
+		"chair", 
+		"lamp", 
+		"mushroom",
+		"outhouse",
+		"pillar",
+		"pond",
+		"rock",
+		"statue",
+		"tree",
+		"turtle",
+	};
 }
