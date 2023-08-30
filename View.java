@@ -28,7 +28,7 @@ class View extends JPanel
 		// Send mouse events to the controller
 		this.addMouseListener(c);
 
-		//Load the turtle image
+		
 		
 		// Use a for loop to load the images for the things array
 		this.images = new BufferedImage[Game.Things.length];
@@ -79,10 +79,7 @@ class View extends JPanel
 		
 		
 
-		// Draw the image so that its bottom center is at (x,y)
-		// int w = this.turtle_image.getWidth();
-		// int h = this.turtle_image.getHeight();
-		// g.drawImage(this.images[0], model.turtle_x - w / 2, model.turtle_y - h, null);
+		
 	}
 	
 	// void removeButton()
