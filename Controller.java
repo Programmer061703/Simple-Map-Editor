@@ -13,6 +13,7 @@ class Controller implements ActionListener, MouseListener, KeyListener
 	boolean keyRight;
 	boolean keyUp;
 	boolean keyDown;
+	static int index; 
 
 	Controller(Model m)
 	{
@@ -32,13 +33,38 @@ class Controller implements ActionListener, MouseListener, KeyListener
 	
 	public void mousePressed(MouseEvent e)
 	{
-		// move turtle to mouse click location
-		model.setDestination(e.getX(), e.getY());
+		
 		// Add a thing to the model using method
 
-		  model.addThing(e.getX(), e.getY());
+		  if(e.getX() < 200 && e.getY() < 200){
+
+			index ++; 
+
+			if(index >= Game.Things.length){
+
+				index = 0;
+
+			}
+
+
+
+		  }
+
+		  if(e.getButton() == 1 && (e.getX() > 200 || e.getY() > 200)){
+
+			model.addThing(e.getX(), e.getY());
+
+		  }
+
+		  else if (e.getButton() == 3){
+
+			model.removeThing(e.getX(), e.getY());
+		  }
+
 
 	}
+
+
 
 	public void mouseReleased(MouseEvent e) 
 	{	}

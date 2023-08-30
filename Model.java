@@ -16,6 +16,7 @@ class Model
 		this.dest_x = 150;
 		this.dest_y = 100;
 		this.things = new ArrayList<Thing>();
+		
 	}
 
 	public void update()
@@ -46,6 +47,38 @@ class Model
 
 	//Add a class to represent a thing
 
+
+	
+	public void addThing(int x, int y)
+	{
+
+		things.add(new Thing(x, y, Controller.index)); // May want to change later
+		
+	}
+
+	public void removeThing(int x, int y){
+
+		double closest_distance = Double.MAX_VALUE; 
+
+		int closest_thing = -1; 
+
+		for(int i = 0; i < things.size(); i++){
+			double distance = Math.sqrt(Math.pow(x - this.things.get(i).x,2) + Math.pow(y - things.get(i).y,2));
+
+			if (distance < closest_distance){
+				closest_thing = i; 
+				closest_distance = distance; 
+			}
+		}
+
+			things.remove(closest_thing); 
+
+		
+	}
+
+}
+
+
 	class Thing
 	{
 		int x;
@@ -59,28 +92,3 @@ class Model
 			this.type = type;
 		}
 	}
-
-	
-	public void addThing(int x, int y)
-	{
-
-		things.add(new Thing(x, y, 0)); // May want to change later
-		
-	}
-
-	
-
-	
-
-
-
-
-	
-
-	
-
-
-
-	
-
-}
