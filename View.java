@@ -16,10 +16,6 @@ class View extends JPanel
 
 	View(Controller c, Model m)
 	{
-		// // Make a button
-		// b1 = new JButton("Never push me!");
-		// b1.addActionListener(c);
-		// this.add(b1);
 
 		// Link up to other objects
 		c.setView(this);
@@ -82,9 +78,4 @@ class View extends JPanel
 		
 	}
 	
-	// void removeButton()
-	// {
-	// 	this.remove(this.b1);
-	// 	this.repaint();
-	// }
 }
