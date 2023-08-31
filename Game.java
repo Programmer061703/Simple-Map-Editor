@@ -16,7 +16,7 @@ public class Game extends JFrame
 
 		// Set some window properties
 		this.setTitle("Turtle Attack!");
-		this.setSize(600, 600);
+		this.setSize(1000, 700);
 		this.setFocusable(true);
 		this.getContentPane().add(view);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,5 +62,9 @@ public class Game extends JFrame
 		"statue",
 		"tree",
 		"turtle",
+		"sisyphus",
+		"bee",
+		"thor",
+		"cursed"
 	};
 }

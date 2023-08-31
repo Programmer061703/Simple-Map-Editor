@@ -9,10 +9,7 @@ class Controller implements ActionListener, MouseListener, KeyListener
 {
 	View view;
 	Model model;
-	boolean keyLeft;
-	boolean keyRight;
-	boolean keyUp;
-	boolean keyDown;
+	
 	static int index; 
 
 	Controller(Model m)
@@ -80,47 +77,12 @@ class Controller implements ActionListener, MouseListener, KeyListener
 	
 	public void keyPressed(KeyEvent e)
 	{
-		switch(e.getKeyCode())
-		{
-			case KeyEvent.VK_RIGHT: 
-				keyRight = true; 
-				break;
-			case KeyEvent.VK_LEFT: 
-				keyLeft = true; 
-				break;
-			case KeyEvent.VK_UP: 
-				keyUp = true; 
-				break;
-			case KeyEvent.VK_DOWN: 
-				keyDown = true; 
-				break;
-		}
+		
 	}
 
 	public void keyReleased(KeyEvent e)
 	{
-		switch(e.getKeyCode())
-		{
-			case KeyEvent.VK_RIGHT: 
-				keyRight = false; 
-				break;
-			case KeyEvent.VK_LEFT: 
-				keyLeft = false; 
-				break;
-			case KeyEvent.VK_UP: 
-				keyUp = false; 
-				break;
-			case KeyEvent.VK_DOWN: 
-				keyDown = false; 
-				break;
-			case KeyEvent.VK_ESCAPE:
-				System.exit(0);
-		}
-		char c = Character.toLowerCase(e.getKeyChar());
-		if(c == 'q')
-			System.exit(0);
-        if(c == 'r')
-            model.reset();
+		
 	}
 
 	public void keyTyped(KeyEvent e)
@@ -128,13 +90,6 @@ class Controller implements ActionListener, MouseListener, KeyListener
 
 	void update()
 	{
-		if(keyRight) 
-            model.dest_x += Model.speed;
-		if(keyLeft) 
-    		model.dest_x -= Model.speed;
-		if(keyDown) 
-            model.dest_y += Model.speed;
-		if(keyUp)
-            model.dest_y -= Model.speed;
+		
 	}
 }
