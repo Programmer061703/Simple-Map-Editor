@@ -10,17 +10,14 @@ import java.awt.Color;
 class View extends JPanel
 {
 	JButton b1;
-	BufferedImage turtle_image;
 	BufferedImage[] images; 
 	Model model;
+	int scrollx; 
+	int scrolly;
 	
 
 	View(Controller c, Model m)
 	{
-		// // Make a button
-		// b1 = new JButton("Never push me!");
-		// b1.addActionListener(c);
-		// this.add(b1);
 
 		// Link up to other objects
 		c.setView(this);
@@ -29,15 +26,8 @@ class View extends JPanel
 		// Send mouse events to the controller
 		this.addMouseListener(c);
 
-		//Load the turtle image
-		try
-		{
-			this.turtle_image = ImageIO.read(new File("images/turtle.png"));
-		} catch(Exception e) {
-			e.printStackTrace(System.err);
-			System.exit(1);
-		}
-
+		
+		
 		// Use a for loop to load the images for the things array
 		this.images = new BufferedImage[Game.Things.length];
 		for(int i = 0; i < Game.Things.length; i++)
@@ -70,25 +60,26 @@ class View extends JPanel
 
 		// Selector for Purple box
 
+		
+		g.drawImage(this.images[Controller.index], 0, 0, null);
+		
+		// Draw in Green
+
+		for(int i = 0; i < model.things.size(); i++ ){
+
+			g.drawImage(this.images[model.things.get(i).type], model.things.get(i).x - this.images[model.things.get(i).type].getWidth() /2, model.things.get(i).y - this.images[model.things.get(i).type].getHeight()/2, null);
+			
+
+			
+		}
+		
+		
 
 
 		
 		
-		
-
 
 		
-		
-
-		// Draw the image so that its bottom center is at (x,y)
-		// int w = this.turtle_image.getWidth();
-		// int h = this.turtle_image.getHeight();
-		// g.drawImage(this.images[0], model.turtle_x - w / 2, model.turtle_y - h, null);
 	}
 	
-	// void removeButton()
-	// {
-	// 	this.remove(this.b1);
-	// 	this.repaint();
-	// }
 }
