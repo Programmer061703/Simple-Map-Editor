@@ -24,9 +24,16 @@ class Controller implements ActionListener, MouseListener, KeyListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		//if(){
-		model.save(); 
-		//}
+		if(e.getSource() == view.saveB)
+		{
+			model.save();
+		}
+		else if(e.getSource() == view.loadB)
+		{
+			model.load();
+		}
+		
+		
 	}
 	
 	public void mousePressed(MouseEvent e)

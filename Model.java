@@ -2,6 +2,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import netscape.javascript.JSObject;
+
 class Model
 {
 	static int speed = 4;
@@ -82,6 +84,21 @@ class Model
 			exception.printStackTrace();
 			System.exit(1);
 		  }
+
+	}
+
+	public void load(){
+		Json ob = Json.load("map.json");
+
+		System.out.println(ob);
+
+		
+
+		
+
+
+		
+
 
 	}
 
