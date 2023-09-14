@@ -24,8 +24,9 @@ class Controller implements ActionListener, MouseListener, KeyListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		// System.out.println("Hey! I said never push that button! This incident will be reported! (j/k)");
-		// view.removeButton();
+		if(){
+		model.save(); 
+		}
 	}
 	
 	public void mousePressed(MouseEvent e)

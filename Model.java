@@ -1,18 +1,16 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 class Model
 {
-	
-	int dest_x;
-	int dest_y;
 	static int speed = 4;
 	ArrayList<Thing> things;
 
 	Model()
 	{
 		
-		this.dest_x = 150;
-		this.dest_y = 100;
+		
 		this.things = new ArrayList<Thing>();
 		
 	}
@@ -26,12 +24,6 @@ class Model
     {
         
     }
-
-	public void setDestination(int x, int y)
-	{
-		this.dest_x = x;
-		this.dest_y = y;
-	}
 
 	//Add a class to represent a thing
 
@@ -64,11 +56,44 @@ class Model
 		
 	}
 
+
+		public  Json marshal()
+	{
+  	Json map = Json.newObject();
+  	Json list_of_things = Json.newList();
+  	map.add("things", list_of_things);
+  	for (Thing t : this.things)
+  	{
+   	 	list_of_things.add(t.marshal());
+ 	}
+ 	 return map;
+	 
+
+	}
+
+	public void save(){
+
+		try {
+			FileWriter writer = new FileWriter("map.json");
+			writer.write(this.marshal().toString());
+			writer.close();
+			
+		  } catch (IOException exception) {
+			exception.printStackTrace();
+			System.exit(1);
+		  }
+
+	}
+
 }
 
 
-	class Thing
-	{
+
+
+
+
+class Thing
+{
 		int x;
 		int y;
 		int type;
@@ -79,4 +104,18 @@ class Model
 			this.y = y;
 			this.type = type;
 		}
-	}
+
+		Json marshal(){
+				Json j = Json.newObject(); 
+				j.add("x",this.x);
+				j.add("y", this.y);
+				j.add("kind", this.type);
+
+
+				return j; 
+		}
+}
+
+
+	
+

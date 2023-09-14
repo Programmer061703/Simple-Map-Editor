@@ -9,13 +9,29 @@ import java.awt.Color;
 
 class View extends JPanel
 {
-	JButton b1;
+	JButton saveB;
+	JButton loadB; 
 	BufferedImage[] images; 
 	Model model;
+	int scrollx; 
+	int scrolly;
 	
 
 	View(Controller c, Model m)
 	{
+		// Add save button
+		saveB = new JButton("Save");
+		saveB.addActionListener(c);
+		saveB.setFocusable(false);
+		this.add(saveB);
+
+
+		// Load save button 
+		loadB = new JButton("Load");
+		loadB.setFocusable(false);
+		loadB.addActionListener(c);
+		this.add(loadB);
+
 
 		// Link up to other objects
 		c.setView(this);
