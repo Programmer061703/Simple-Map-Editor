@@ -4,8 +4,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseMotionListener;
 
-class Controller implements ActionListener, MouseListener, KeyListener
+class Controller implements ActionListener, MouseListener, KeyListener, MouseMotionListener
 {
 	View view;
 	Model model;
@@ -57,7 +58,9 @@ class Controller implements ActionListener, MouseListener, KeyListener
 
 		  if(e.getButton() == 1 && (e.getX() > 200 || e.getY() > 200)){
 
-			model.addThing(e.getX(), e.getY());
+			model.addThing(e.getX(), e.getY()); // Add ScrollX and ScrollY to this later
+
+
 
 		  }
 
@@ -99,5 +102,44 @@ class Controller implements ActionListener, MouseListener, KeyListener
 	void update()
 	{
 		
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'mouseDragged'");
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+
+		if(e.getX() <= 100 && e.getY() >= 100){
+
+			view.scrollx -= 10;
+
+		}
+
+		else if(e.getX() >= 900 && e.getY() >= 100 ){
+
+
+			view.scrollx += 10; 
+
+
+		}
+
+		// else if(e.getX() >= 100 && e.getX() <= 900 && e.getY() <= 100){
+
+		// 	view.scrolly -= 10; 
+
+		// }
+
+		// else if(e.getX() >= 100 && e.getX() <= 900 && e.getY() >= 600){
+
+		// 	view.scrolly += 10; 
+
+		// }
+		
+
+
 	}
 }

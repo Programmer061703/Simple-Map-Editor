@@ -2,6 +2,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import netscape.javascript.JSObject;
 
 class Model
@@ -67,11 +68,31 @@ class Model
   	for (Thing t : this.things)
   	{
    	 	list_of_things.add(t.marshal());
+		
+
+				
+
  	}
  	 return map;
 	 
 
 	}
+
+	public Json unMarshal(Json ob){
+
+		Json list_of_things = ob.get("things");
+		this.things.clear();
+
+		for(int i = 0; i < list_of_things.size(); i++){
+			this.things.add(new Thing(list_of_things.get(i)));
+		}
+
+
+		return list_of_things;
+	}
+
+	
+	
 
 	public void save(){
 
@@ -89,13 +110,12 @@ class Model
 
 	public void load(){
 		Json ob = Json.load("map.json");
-
+		unMarshal(ob);
 		System.out.println(ob);
 
-		
+
 
 		
-
 
 		
 
@@ -130,6 +150,12 @@ class Thing
 
 
 				return j; 
+		}
+
+		Thing(Json ob){
+			this.x = (int)ob.getLong("x");
+			this.y = (int)ob.getLong("y");
+			this.type = (int)ob.getLong("kind");
 		}
 }
 

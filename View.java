@@ -13,8 +13,8 @@ class View extends JPanel
 	JButton loadB; 
 	BufferedImage[] images; 
 	Model model;
-	int scrollx; 
-	int scrolly;
+	static int scrollx; 
+	static int  scrolly;
 	
 
 	View(Controller c, Model m)
@@ -24,6 +24,8 @@ class View extends JPanel
 		saveB.addActionListener(c);
 		saveB.setFocusable(false);
 		this.add(saveB);
+
+
 
 
 		// Load save button 
@@ -39,6 +41,7 @@ class View extends JPanel
 
 		// Send mouse events to the controller
 		this.addMouseListener(c);
+		this.addMouseMotionListener(c);
 
 		
 		
@@ -81,11 +84,13 @@ class View extends JPanel
 
 		for(int i = 0; i < model.things.size(); i++ ){
 
-			g.drawImage(this.images[model.things.get(i).type], model.things.get(i).x - this.images[model.things.get(i).type].getWidth() /2, model.things.get(i).y - this.images[model.things.get(i).type].getHeight()/2, null);
+			g.drawImage(this.images[model.things.get(i).type], (model.things.get(i).x  - this.images[model.things.get(i).type].getWidth() /2) - scrollx, (model.things.get(i).y - this.images[model.things.get(i).type].getHeight()/2) - scrolly, null);
 			
 
 			
 		}
+
+
 		
 		
 
