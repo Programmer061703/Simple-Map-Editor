@@ -10,6 +10,11 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 {
 	View view;
 	Model model;
+	int boxX = 0; 
+    int boxY = 0;
+    int boxWidth = 200; 
+    int boxHeight = 200;
+	int margin = 100;
 	
 	static int index; 
 
@@ -113,39 +118,50 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 	@Override
 	public void mouseMoved(MouseEvent e) {
 
-		// Scroll Right in the X direction
+		
+		if(e.getX() >= boxX && e.getX() <= (boxX + boxWidth) && e.getY() >= boxY && e.getY() <= (boxY + boxHeight)) {
 
-		if(e.getX() <= 100 && e.getY() >= 100){
+			
+			System.out.println("Mouse is in the box");
+			
 
-			View.scrollx -= 10;
+
 
 		}
 
-		// Scroll Left in the X direction
+		else{
 
-		else if(e.getX() >= 900 && e.getY() >= 100 ){
+			System.out.println("Mouse is not in the box");
 
+				// Scroll to the right
+			if (e.getX() >= (view.getWidth() - margin)) {  
+				
+				
+				View.scrollx += 10;
+			}
 
-			View.scrollx += 10; 
+			// Scroll to the left
+			else if (e.getX() <= margin) {  
+				
+				View.scrollx -= 10;
+			}
 
+			// Scroll up
+			else if (e.getY() <= margin) {  
+				
+				View.scrolly -= 10;
+			}
 
-		 }
-		// Scroll Up in the Y direction
-		else if(e.getX() >= 100 && e.getX() <= 900 && e.getY() <= 100){
+			// Scroll down
+			else if (e.getY() >= (view.getHeight() - margin)) {  
+				
+				View.scrolly += 10;
+			}
 
-			View.scrolly -= 10; 
 
 		}
 		
-		// Scroll Down in the Y direction
 
-		else if(e.getX() >= 100 && e.getX() <= 900 && e.getY() >= 600){
-
-			View.scrolly += 10; 
-
-		}
 		
-
-
 	}
 }

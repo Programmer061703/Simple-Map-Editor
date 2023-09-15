@@ -1,11 +1,13 @@
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.GraphicsConfigTemplate;
+import java.awt.MouseInfo;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Point;
 
 class View extends JPanel
 {
@@ -85,6 +87,15 @@ class View extends JPanel
 		for(int i = 0; i < model.things.size(); i++ ){
 
 			g.drawImage(this.images[model.things.get(i).type], (model.things.get(i).x  - this.images[model.things.get(i).type].getWidth() /2) - scrollx, (model.things.get(i).y - this.images[model.things.get(i).type].getHeight()/2) - scrolly, null);
+			
+			// Print out the x and y coordinates of the mouse to the terminal
+
+			Point p = MouseInfo.getPointerInfo().getLocation();
+
+			System.out.println("X: " + p.getX() + " Y: " + p.getY());
+
+			
+
 			
 
 			
