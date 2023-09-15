@@ -10,10 +10,18 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 {
 	View view;
 	Model model;
-	int boxX = 0; 
-    int boxY = 0;
-    int boxWidth = 200; 
-    int boxHeight = 200;
+
+	// Variables for the box around the Purple box
+	int PboxX = 0; 
+    int PboxY = 0;
+    int PboxWidth = 200; 
+    int PboxHeight = 200;
+	// Variables for the box around save and load
+	int SboxX = 0; 
+	int SboxY = 0;
+	int SboxWidth = 200; 
+	int SboxHeight = 200;
+	
 	int margin = 100;
 	
 	static int index; 
@@ -119,7 +127,7 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 	public void mouseMoved(MouseEvent e) {
 
 		
-		if(e.getX() >= boxX && e.getX() <= (boxX + boxWidth) && e.getY() >= boxY && e.getY() <= (boxY + boxHeight)) {
+		if(e.getX() >= PboxX && e.getX() <= (PboxX + PboxWidth) && e.getY() >= PboxY && e.getY() <= (PboxY + PboxHeight)) {
 
 			
 			System.out.println("Mouse is in the box");
@@ -129,9 +137,15 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 
 		}
 
+		else if(){
+			
+			
+
+		}
+
 		else{
 
-			System.out.println("Mouse is not in the box");
+			//System.out.println("Mouse is not in the box");
 
 				// Scroll to the right
 			if (e.getX() >= (view.getWidth() - margin)) {  
