@@ -58,7 +58,7 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 
 		  if(e.getButton() == 1 && (e.getX() > 200 || e.getY() > 200)){
 
-			model.addThing(e.getX(), e.getY()); // Add ScrollX and ScrollY to this later
+			model.addThing(e.getX() + View.scrollx, e.getY() + View.scrolly); // Add ScrollX and ScrollY to this later
 
 
 
@@ -113,31 +113,37 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 	@Override
 	public void mouseMoved(MouseEvent e) {
 
+		// Scroll Right in the X direction
+
 		if(e.getX() <= 100 && e.getY() >= 100){
 
-			view.scrollx -= 10;
+			View.scrollx -= 10;
 
 		}
+
+		// Scroll Left in the X direction
 
 		else if(e.getX() >= 900 && e.getY() >= 100 ){
 
 
-			view.scrollx += 10; 
+			View.scrollx += 10; 
 
+
+		 }
+		// Scroll Up in the Y direction
+		else if(e.getX() >= 100 && e.getX() <= 900 && e.getY() <= 100){
+
+			View.scrolly -= 10; 
 
 		}
+		
+		// Scroll Down in the Y direction
 
-		// else if(e.getX() >= 100 && e.getX() <= 900 && e.getY() <= 100){
+		else if(e.getX() >= 100 && e.getX() <= 900 && e.getY() >= 600){
 
-		// 	view.scrolly -= 10; 
+			View.scrolly += 10; 
 
-		// }
-
-		// else if(e.getX() >= 100 && e.getX() <= 900 && e.getY() >= 600){
-
-		// 	view.scrolly += 10; 
-
-		// }
+		}
 		
 
 
