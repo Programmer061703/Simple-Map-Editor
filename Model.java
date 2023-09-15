@@ -46,7 +46,7 @@ class Model
 		int closest_thing = -1; 
 
 		for(int i = 0; i < things.size(); i++){
-			double distance = Math.sqrt(Math.pow(x - this.things.get(i).x,2) + Math.pow(y - things.get(i).y,2));
+			double distance = Math.sqrt(Math.pow((x + View.scrollx)  - this.things.get(i).x,2) + Math.pow((y + View.scrolly)  - things.get(i).y,2));
 
 			if (distance < closest_distance){
 				closest_thing = i; 
