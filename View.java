@@ -77,6 +77,7 @@ class View extends JPanel
 		// Draw a 200 x 200 box at top left of window
 		g.fillRect(0, 0, 200, 200);
 
+		
 		// Selector for Purple box
 
 		
