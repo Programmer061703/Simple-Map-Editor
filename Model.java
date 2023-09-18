@@ -1,7 +1,9 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.awt.Point;
 
+import javax.annotation.processing.SupportedOptions;
 
 import netscape.javascript.JSObject;
 
@@ -35,7 +37,15 @@ class Model
 	public void addThing(int x, int y)
 	{
 
+		if(Controller.index == 9){
+
+			things.add(new Jumper(x, y, Controller.index));
+			
+		}
+		else{
+
 		things.add(new Thing(x, y, Controller.index)); // May want to change later
+		}
 		
 	}
 
@@ -84,6 +94,12 @@ class Model
 		this.things.clear();
 
 		for(int i = 0; i < list_of_things.size(); i++){
+
+			if(list_of_things.get(i).getLong("kind") == 9){
+
+				this.things.add(new Jumper(list_of_things.get(i)));
+			}
+			else
 			this.things.add(new Thing(list_of_things.get(i)));
 		}
 
@@ -134,12 +150,17 @@ class Thing
 		int x;
 		int y;
 		int type;
+		double t = 0;
 
 		Thing(int x, int y, int type)
 		{
 			this.x = x;
 			this.y = y;
 			this.type = type;
+			
+
+
+
 		}
 
 		Json marshal(){
@@ -147,16 +168,49 @@ class Thing
 				j.add("x",this.x);
 				j.add("y", this.y);
 				j.add("kind", this.type);
+				j.add("t", this.t);
 
 
 				return j; 
+		}
+
+		public Point getPoint(){
+			return new Point(this.x, this.y);
 		}
 
 		Thing(Json ob){
 			this.x = (int)ob.getLong("x");
 			this.y = (int)ob.getLong("y");
 			this.type = (int)ob.getLong("kind");
+			this.t = (double)ob.getDouble("t");
 		}
+}
+
+class Jumper extends Thing{
+
+	
+
+
+	Jumper(int x, int y, int type){
+		super(x, y, type);
+	}
+	Jumper(Json ob){
+			super(ob);
+		}
+
+	
+	@Override
+	public Point getPoint(){
+		t++;
+		int yOff = (int)Math.max(0., 50 * Math.sin(((double)t) / 5));
+
+		return new Point(x, y - yOff);
+	}
+
+	//return new Point(this.x, this.y - (int)Math.max(0., 50 * Math.sin(((double)t) / 5)))
+
+
+
 }
 
 

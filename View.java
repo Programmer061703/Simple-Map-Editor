@@ -87,7 +87,7 @@ class View extends JPanel
 
 		for(int i = 0; i < model.things.size(); i++ ){
 
-			g.drawImage(this.images[model.things.get(i).type], (model.things.get(i).x  - this.images[model.things.get(i).type].getWidth() /2) - scrollx, (model.things.get(i).y - this.images[model.things.get(i).type].getHeight()/2) - scrolly, null);
+			g.drawImage(this.images[model.things.get(i).type], (model.things.get(i).getPoint().x  - this.images[model.things.get(i).type].getWidth() /2) - scrollx, (model.things.get(i).getPoint().y - this.images[model.things.get(i).type].getHeight()/2) - scrolly, null);
 			
 			// Print out the x and y coordinates of the mouse to the terminal
 
