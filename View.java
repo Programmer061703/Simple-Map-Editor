@@ -83,7 +83,7 @@ class View extends JPanel
 		
 		g.drawImage(this.images[Controller.index], 0, 0, null);
 		
-		// Draw in Green
+		// Draws Images 
 
 		for(int i = 0; i < model.things.size(); i++ ){
 
