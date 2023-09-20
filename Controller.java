@@ -16,10 +16,7 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 	Model model;
 
 	// Variables for the box around the Purple box
-	int PboxX = 0; 
-    int PboxY = 0;
-    int PboxWidth = 200; 
-    int PboxHeight = 200;
+	
 
 	
 	// Variables for the box around save and load
@@ -132,11 +129,19 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 	@Override
 	public void mouseMoved(MouseEvent e) {
 
+
+		//Save Load Box
 	int windowWidth = view.getWidth();
+	
 	int SboxX = windowWidth/2 - 100;
 	int SboxY = 0;
 	int SboxWidth = 200; 
 	int SboxHeight = 120;
+	//Purple Box
+	int PboxX = 0; 
+    int PboxY = 0;
+    int PboxWidth = 200; 
+    int PboxHeight = 200;
 	Point p = MouseInfo.getPointerInfo().getLocation();
 	
 	
@@ -166,13 +171,15 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 			//System.out.println("Mouse is not in the box");
 
 		try{
+
+
 				
 				// Scroll to the right
 			if (p.x >= (view.getWidth() - margin)) {  
 
 				Robot robot = new Robot();
 				
-				// Scroll to the right using the robot
+				
 				robot.mouseMove(view.getWidth() - margin, p.y);
 				View.scrollx += 10;
 
@@ -223,4 +230,9 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 		
 	}
 }
+
+
+
+
+
 }
