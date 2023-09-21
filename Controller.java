@@ -147,16 +147,19 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 	
 	
 
-		
-		if(e.getX() >= PboxX && e.getX() <= (PboxX + PboxWidth) && e.getY() >= PboxY && e.getY() <= (PboxY + PboxHeight)) {
+		// Purple Box 
+		if(e.getX() >= PboxX && e.getX() <= (PboxWidth) && e.getY() >= PboxY && e.getY() <= ( PboxHeight)) {
 
 			
 			System.out.println("Mouse is in the box");
 			
+ 
 
 
 
 		}
+
+		// Save and Load Box
 
 		else if(e.getX() >= SboxX && e.getX() <= (SboxX + SboxWidth) && e.getY() >= SboxY && e.getY() <= (SboxY + SboxHeight)){
 
@@ -166,6 +169,7 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 
 		}
 
+		// Mouse is not in the box
 		else{
 
 			//System.out.println("Mouse is not in the box");
