@@ -72,10 +72,7 @@ class View extends JPanel
 		// Clear the background
 		g.setColor(new Color(10, 249, 42));
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		// Change color to purple
-		g.setColor(new Color(255, 0, 255));
-		// Draw a 200 x 200 box at top left of window
-		g.fillRect(0, 0, 200, 200);
+		
 
 		
 
@@ -93,15 +90,15 @@ class View extends JPanel
 			
 			// Print out the x and y coordinates of the mouse to the terminal
 			
-
-			
-
-			
-
-			
-
-			
 		}
+		
+
+		// Draw the purple box
+		g.setColor(new Color(255, 0, 255));
+		g.fillRect(0, 0, 200, 200);
+		
+		// Draw the selector for the purple box
+		g.drawImage(this.images[Controller.index], 0, 0, null);
 
 
 		
