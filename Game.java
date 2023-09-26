@@ -38,6 +38,8 @@ public class Game extends JFrame
 			controller.update();
 			model.update();
 			view.repaint(); // Indirectly calls View.paintComponent
+			
+
 			Toolkit.getDefaultToolkit().sync(); // Updates screen
 
 			// Go to sleep for a brief moment
@@ -65,6 +67,7 @@ public class Game extends JFrame
 		"sisyphus",
 		"bee",
 		"thor",
-		"cursed"
+		"cursed",
+		"God"
 	};
 }

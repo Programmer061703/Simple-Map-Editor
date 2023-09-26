@@ -9,6 +9,7 @@ import netscape.javascript.JSObject;
 
 class Model
 {
+	
 	static int speed = 4;
 	ArrayList<Thing> things;
 
@@ -40,6 +41,29 @@ class Model
 		if(Controller.index == 9){
 
 			things.add(new Jumper(x, y, Controller.index));
+			
+		}
+
+		else if(Controller.index == 14){
+
+
+			things.add(new Thing(x, y, Controller.index));
+
+		Thread bibleThread = new Thread(() -> Bible.DisplayBible());
+        Thread audioThread = new Thread(() -> AudioPlayer.playAudio());
+
+		bibleThread.start();
+		audioThread.start();
+
+		
+
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	
 			
 		}
 		else{
@@ -212,6 +236,22 @@ class Jumper extends Thing{
 
 
 }
+
+
+
+    
+
+
+
+	
+
+	
+
+
+
+
+
+
 
 
 	

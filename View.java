@@ -1,13 +1,31 @@
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.GraphicsConfigTemplate;
+import java.awt.List;
 import java.awt.MouseInfo;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
+
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.*;
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+
+
+
 
 class View extends JPanel
 {
@@ -18,9 +36,16 @@ class View extends JPanel
 	static int scrollx; 
 	static int  scrolly;
 	
+            
+	
+	
 
 	View(Controller c, Model m)
 	{
+
+		
+
+		
 		// Add save button
 		saveB = new JButton("Save");
 		saveB.addActionListener(c);
@@ -59,6 +84,14 @@ class View extends JPanel
 				System.exit(1);
 			}
 		}
+
+		// Use a for loop to read in the Bible.txt into an array
+
+
+
+		
+
+
 
 
 
@@ -101,6 +134,10 @@ class View extends JPanel
 		g.drawImage(this.images[Controller.index], 0, 0, null);
 
 
+
+	
+
+
 		
 		
 
@@ -112,3 +149,137 @@ class View extends JPanel
 	}
 	
 }
+
+
+ class Bible {
+
+
+	private static int currentLineIndex;
+	
+	
+	
+	// Reads in the bible.txt to an array
+   
+	
+	public static ArrayList<String> loadBible() {
+        // Create an ArrayList to store the lines of the text file
+        ArrayList<String> lines = new ArrayList<>();
+
+        // Define the path to your bible.txt file
+        String filePath = "bible.txt";
+
+        try {
+            // Create a FileReader to read the file
+            FileReader fileReader = new FileReader(filePath);
+
+            // Wrap the FileReader in a BufferedReader for efficient reading
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String line;
+            
+            // Read each line of the file and add it to the ArrayList
+            while ((line = bufferedReader.readLine()) != null) {
+                lines.add(line);
+            }
+
+            // Close the BufferedReader
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1); // Exit the program if an error occurs
+        }
+
+		return lines; 
+
+        
+        
+        
+    }
+
+	public static void DisplayBible(){
+		
+		JFrame frame = new JFrame("Bible Display");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+        frame.add(new JScrollPane(textArea));
+
+        ArrayList<String> lines = loadBible();
+        currentLineIndex = 0;
+		
+
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (currentLineIndex < lines.size()) {
+                    textArea.append(lines.get(currentLineIndex) + "\n");
+                    currentLineIndex++;
+                } else {
+                    // All lines have been displayed; stop the timer
+                    ((Timer) e.getSource()).stop();
+                }
+            }
+        });
+
+        frame.setVisible(true);
+        timer.start();
+    }
+		
+
+
+
+
+
+
+	}
+
+
+
+	 class AudioPlayer{
+
+		public static void playAudio() {
+        // Hardcoded audio file path
+        String audioFilePath = "HolyMusic.wav";
+
+        try {
+            // Create an AudioInputStream to read the audio file
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(audioFilePath));
+
+            // Get the audio format from the input stream
+            AudioFormat audioFormat = audioInputStream.getFormat();
+
+            // Set up the data line info
+            DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, audioFormat);
+
+            // Get a source data line (for playback)
+            SourceDataLine sourceDataLine = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
+
+            // Open the source data line and start it
+            sourceDataLine.open(audioFormat);
+            sourceDataLine.start();
+
+            // Read and play the audio data
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+
+            while ((bytesRead = audioInputStream.read(buffer)) != -1) {
+                sourceDataLine.write(buffer, 0, bytesRead);
+            }
+
+            // Wait for the audio to finish playing
+            sourceDataLine.drain();
+
+            // Close the audio input stream and the data line
+            audioInputStream.close();
+            sourceDataLine.close();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+
+
+	}
+}
+	
+
