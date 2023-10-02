@@ -1,3 +1,5 @@
-# paradigmsHW
+# Map Editor
 
-Semesters worth of assignments combined to create a online MMO. This is the client, the server is elsewhere
+Create a simple map with a preset number of Images
+
+
