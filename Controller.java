@@ -134,6 +134,7 @@ class Controller implements ActionListener, MouseListener, KeyListener, MouseMot
 	int windowWidth = view.getWidth();
 	
 	int SboxX = windowWidth/2 - 100;
+
 	int SboxY = 0;
 	int SboxWidth = 200; 
 	int SboxHeight = 120;
