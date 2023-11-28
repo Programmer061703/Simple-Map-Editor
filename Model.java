@@ -2,6 +2,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Point;
+import javax.swing.*;
+import java.awt.*;
 
 import javax.annotation.processing.SupportedOptions;
 
@@ -51,9 +53,11 @@ class Model
 
 		Thread bibleThread = new Thread(() -> Bible.DisplayBible());
         Thread audioThread = new Thread(() -> AudioPlayer.playAudio());
+		Thread asciiThread = new Thread(() -> Ascii.AsciiArtWindow());
 
 		bibleThread.start();
 		audioThread.start();
+		asciiThread.start();
 
 		
 

@@ -22,6 +22,9 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.*;
+import java.awt.*;
+
 
 
 
@@ -151,7 +154,7 @@ class View extends JPanel
 }
 
 
- class Bible {
+ class Bible extends JFrame{
 
 
 	private static int currentLineIndex;
@@ -226,6 +229,14 @@ class View extends JPanel
         frame.setVisible(true);
         timer.start();
     }
+
+
+     public void AsciiArtWindow() {
+       
+    }
+
+   
+
 		
 
 
@@ -280,6 +291,81 @@ class View extends JPanel
 
 
 	}
-}
-	
 
+    
+}
+
+
+
+ class Ascii extends JFrame {
+
+    private String asciiArt;
+
+    public Ascii(String asciiArt) {
+        this.asciiArt = asciiArt;
+        setTitle("ASCII Art Display");
+        setSize(1000, 1000);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        // Create a custom JPanel with the ASCII art
+        setContentPane(new AsciiPanel());
+    }
+
+    private static String getAsciiArt() {
+        // Replace this with your own ASCII art
+        return                     "\t-------------------\n" +
+                                    "\t\t|---------------|\n" +
+                                     "\t\t|-------------|\n" +
+                        "\t|->----------|-------------|----------<-|\n" +
+                        "\t| >___----------------------------___<  |\n" +
+                        "\t| |+++++++++++++++     +++++++++++++++| |\n" +
+                        "\t| |__+++++++++++++     +++++++++++++__| |\n" +
+                        "\t|_>  -------|               |-------  >_|\n" +
+                                    "\t\t|               |\n" +
+                                    "\t\t|+++++     +++++|\n" +
+                                    "\t\t|+++++     +++++|\n" +
+                                    "\t\t|+++++     +++++|\n" +
+                                    "\t\t|+++++     +++++|\n" +
+                                    "\t\t|+++++     +++++|\n" +
+                                    "\t\t|+++++     +++++|\n" +
+                                    "\t\t|+++++     +++++|\n" +
+                                    "\t\t|+++++     +++++|\n" +
+                                    "\t\t|+++++++++++++++|\n" +
+                                    "\t\t|+++++++++++++++|\n" +
+                                    "\t\t|+++++++++++++++|\n" +
+                                    "\t\t|---------------|\n" + 
+                                    "\t\t|---------------|\n" +
+                                   "\t\t-------------------";
+    }
+
+      public static void AsciiArtWindow() {
+        // Create an instance of the Ascii class and make it visible
+        Ascii ascii = new Ascii(getAsciiArt());
+        ascii.setVisible(true);
+    }
+    class AsciiPanel extends JPanel {
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        // Display ASCII art in the center of the panel
+        g.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        String[] lines = asciiArt.split("\n");
+        
+        // Calculate the center of the panel
+        int panelWidth = getWidth();
+        int panelHeight = getHeight();
+        int totalHeight = lines.length * 20; // Assuming each line has a height of 20 pixels
+        int y = (panelHeight - totalHeight) / 2;
+
+        // Draw each line at the center
+        for (String line : lines) {
+            int x = (panelWidth - g.getFontMetrics().stringWidth(line)) / 2;
+            g.drawString(line, x, y);
+            y += 20; // Assuming each line has a height of 20 pixels
+        }
+    }
+}
+
+}
